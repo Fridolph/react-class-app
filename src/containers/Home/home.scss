@@ -1,0 +1,58 @@
+.header-home {
+  display: flex;
+  // justify-content: space-between;
+  // align-items: center;
+  background-color: #2a2a2a;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  .header-menu {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    i {color:#fff;}
+    img {
+      margin-left: 20px;
+      width: 60px;
+      height: 60px;
+    }
+    .icon-control {
+      i {font-size: 20px;}
+      margin-right: 10px;
+      padding: 8px;
+    }
+  }
+  .menu-list {
+    position:absolute;
+    top: 80px;
+    background-color:#2a2a2a;
+    width: 100%;
+    left: 0;
+    li {
+      border-top: 1px solid #464646;
+      height: 44px;
+      color:#eee;
+      line-height: 44px;
+      text-align: center;
+    }
+  }
+}
+
+// 动画效果
+.fadeIn-enter {
+  opacity: 0.01;
+}
+.fadeIn-enter-active {
+  opacity: 1;
+  transition: all 0.4s ease-in-out;
+}
+.fadeIn-exit {
+  opacity: 1;
+}
+.fadeIn-exit-active {
+  opacity: 0.01;
+  transition: all 0.4s ease-in-out;
+}
