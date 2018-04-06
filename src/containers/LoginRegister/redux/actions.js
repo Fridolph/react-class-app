@@ -4,7 +4,6 @@ import {
   auths
 } from '../../../api/user'
 import * as Types from './actionTypes'
-import {push} from 'react-router-redux'
 import {setSS} from '../../../utils/util'
 
 export const register = userInfo => (dispatch) => {
@@ -21,8 +20,6 @@ export const register = userInfo => (dispatch) => {
         type: Types.SET_USER_INFO,
         data: res.data
       })
-      // 跳转路由
-      dispatch(push('/lessson')) 
     }
   })
 }
@@ -52,6 +49,18 @@ export const auth = _ => dispatch => {
       dispatch({
         type: Types.SET_USER_INFO,
         data: res.data
+      })
+    }
+  })
+}
+
+export const validate = () => dispatch => {
+  auths().then(res => {
+    if (res.data.username) {
+      setSS('user', res)
+      dispatch({
+        type: Types.SET_USER_INFO,
+        userInfo: res.data
       })
     }
   })

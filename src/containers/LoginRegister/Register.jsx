@@ -16,6 +16,12 @@ class Register extends Component {
     this.props.register({username, password})
   }
 
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.user.userInfo) {
+      this.props.history.push('/lesson')
+    }
+  }
+
   render() {
     return (
       <div className="page-login-register">

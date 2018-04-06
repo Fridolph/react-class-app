@@ -13,7 +13,17 @@ class Login extends Component {
     let username = this.username.value
     let password = this.password.value
     this.props.login({username, password})
-    this.props.history.push('/lessons')
+  }
+
+  componentWillMount() {
+    // 验证如果登录过，则跳到课程页面
+    this.props.validate()
+  }
+  
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.user.userInfo) {
+      this.props.history.push('/lesson')
+    }
   }
 
   render() {

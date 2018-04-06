@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Switch, Route, BrowserRouter as Router} from 'react-router-dom'
-import ConnectedRouter from 'react-router-redux'
-import createHistory from 'history/createHashHistory'
+// import {ConnectedRouter} from 'react-router-redux'
+// import createHistory from 'history/createBrowserHistory'
 // 组件
 import PrivateRoute from './components/PrivateRoute'
 import Home from './containers/Home'
@@ -13,13 +13,12 @@ import Detail from './containers/Detail'
 import TabBar from './layouts/TabBar'
 
 
-let historys = createHistory()
 // console.log('PrivateRoute', PrivateRoute)
 
 export default class App extends Component {
   render() {
     return (
-      <Router historys={historys}>
+      <Router>
         {/* <ConnectedRouter history={history}> */}
         <div>
           <TabBar/>

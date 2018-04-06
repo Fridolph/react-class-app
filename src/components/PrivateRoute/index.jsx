@@ -8,7 +8,7 @@ export default class PrivateRoute extends Component {
     console.log(Comp, rest)
     return (
       <Route {...rest} render={props => (
-        getSS('user').data.username
+        getSS('user') && getSS('user').data.username
           ? <Comp {...props} />
           : <Redirect to={'/login'} />
       )}>

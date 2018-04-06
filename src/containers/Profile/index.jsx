@@ -6,8 +6,11 @@ import * as actions from '../LoginRegister/redux/actions'
 
 class Profile extends Component {
   render() {
-    const {username} = this.props.user.userInfo
-    // console.log('username', username)
+    let username
+    if (this.props.user && this.props.user.userInfo) {
+      username = this.props.user.userInfo.username
+    }
+    
     return (
       <div className="page-profile">
         <section className="profile-bg">
