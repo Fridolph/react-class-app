@@ -38,7 +38,7 @@ class Register extends Component {
           </div>
           <div className="form-group">
             <Link to={'/login'}>点击登录</Link>
-            <p>{this.props.user.err}</p>
+            <p>{this.props.user.msg}</p>
           </div>
         </form>
       </div>

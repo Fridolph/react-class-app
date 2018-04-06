@@ -1,7 +1,7 @@
 // 存放一些公共的JS方法
 // sessionStorage
 export const setSS = (key, val) => {
-  if (typeof value === 'object') val = JSON.stringify(val)
+  if (typeof val === 'object') val = JSON.stringify(val)
   sessionStorage.setItem(key, val)
 }
 
@@ -15,7 +15,7 @@ export const getSS = key => {
 }
 // localStorage
 export const setLS = (key, val) => {
-  if (typeof value === 'object') val = JSON.stringify(val)
+  if (typeof val === 'object') val = JSON.stringify(val)
   localStorage.setItem(key, val)
 }
 

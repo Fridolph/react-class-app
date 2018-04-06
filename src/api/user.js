@@ -8,7 +8,11 @@ export const register = userInfo => {
 }
 
 // 登录
-// export const login = (userInfo) => {
-//   const {username, password} = userInfo
-//   return get(`${URL}/register`)
-// }
+export const login = userInfo => {
+  return post(`${URL}/login`, userInfo)
+}
+
+// 验证登录
+export const auths = _ => {
+  return get(`${URL}/auth`)
+}

@@ -3,12 +3,16 @@ import './login-register.scss'
 import avatar from '../../assets/img/me.jpg'
 import {Link} from 'react-router-dom'
 import MHeader from '../../layouts/MHeader'
+import {connect} from 'react-redux'
+import * as actions from './redux/actions'
 
-export default class Login extends Component {
+class Login extends Component {
 
   handleLogin = e => {
     e.preventDefault()
-    console.log('点击登录')
+    let username = this.username.value
+    let password = this.password.value
+    this.props.login({username, password})
   }
 
   render() {
@@ -22,20 +26,26 @@ export default class Login extends Component {
           </div>
           <div className="form-group">
             <label htmlFor="name">用户</label>
-            <input type="text" name="username" placeholder="用户名"/>
+            <input ref={ref => this.username = ref} type="text" name="username" placeholder="用户名"/>
           </div>
           <div className="form-group">
             <label htmlFor="password">密码</label>
-            <input type="password" placeholder="密码" name="password" />
+            <input ref={ref => this.password = ref} type="password" placeholder="密码" name="password" />
           </div>
           <div className="form-group">
             <input type="submit" value="登录" />
           </div>
           <div className="form-group">
             <Link to={'/register'}>点击注册</Link>
+            <p>{this.props.user.msg}</p>
           </div>
         </form>
       </div>
     )
   }
 }
+
+export default connect(
+  state => ({...state}),
+  actions
+)(Login)

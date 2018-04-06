@@ -1,22 +1,19 @@
 const mongoose = require('mongoose')
-// 连接mongo 并且使用imooc这个集合
-const DB_URL = 'mongodb://localhost:27017/imooc-chat'
-
+const DB_URL = 'mongodb://localhost:27017/react-class-app'
 mongoose.connect(DB_URL)
+mongoose.connection.on('connected', () => {
+  console.log('mongoDB connect success')
+})
 
-const models = {
-  user: {
-    user: {type: String, require: true},
-    pwd: {type: String, require: true},
+const userSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
   }
-}
+})
 
-for (let m in models) {
-  mongoose.model(m, new mongoose.Schema(models[m]))
-}
-
-module.exports = {
-  getModel(name) {
-    return mongoose.model(name)
-  }
-}
+module.exports = mongoose.model('user', userSchema)

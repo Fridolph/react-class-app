@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import {Switch, Route} from 'react-router-dom'
+// 组件
+// import PrivateRoute from './components/PrivateRoute'
 import Home from './containers/Home'
 import Login from './containers/LoginRegister/Login'
 import Register from './containers/LoginRegister/Register'
@@ -14,12 +16,12 @@ export default class App extends Component {
       <div>
         <TabBar />
         <Switch>
-          <Route exact path={'/'} component={Home}></Route>
-          <Route path={'/register'} component={Register}></Route>
-          <Route path={'/login'} component={Login}></Route>
-          <Route path={'/lesson'} component={Lesson}></Route>
-          <Route path={'/profile'} component={Profile}></Route>
-          <Route path={'/detail'} component={Detail}></Route>
+          <Route exact path={'/'} component={Home} />
+          <Route path={'/register'} component={Register} />
+          <Route path={'/login'} component={Login} />
+          <Route path={'/lesson'} component={Lesson}/>
+          <Route path={'/profile'} component={Profile} />
+          <Route path={'/detail'} component={Detail} />
         </Switch>
       </div>
     )

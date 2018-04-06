@@ -1,22 +1,26 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose')
+const utility = require('utility')
 mongoose.Promise = global.Promise
-const DB_URL = 'mongodb://localhost:27017/react-class-app'
-mongoose.connect(DB_URL)
-mongoose.connection.on('connected', () => {
-  console.log('mongoDB connect success')
-})
+
 const _filter = { pwd: 0, __v: 0 }
-const {md5Pwd} = require('./utils/pwd')
-const {getModel} = require('./model')
+// const {md5Pwd} = require('./utils/pwd')
 
 const app = express()
 // 使用中间间
-app.use(cookieParser())
+app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
-
+const session = require('express-session')
+const mongoStore = require('connect-mongo')(session)
+app.use(session({
+  resave: true,
+  saveUninitialized: true,
+  secret: 'fueson',
+  store: new mongoStore({
+    url: 'mongodb://localhost:27017/react-class-app'
+  })
+}))
 // 设置跨域权限
 app.all('*', (req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:3000')
@@ -44,37 +48,76 @@ app.get('/api/lessonlist/:type/:offset/:limit', (req, res) => {
   return res.json(lessonList)
 })
 
+/**
+ * 加密，注册登录API
+ */
+const md5Pwd = pwd => {
+  const salt = 'fys520yk'
+  return utility.md5(utility.md5(pwd + salt))
+}
+
 // 注册接口
-const User = getModel('user')
-app.post('/api/register', async (req, res) => {
-  const { username, password } = req.body
-  // console.log(req.body)
-  await User.findOne({ user: username }, _filter).then(doc => {
+const User = require('./model')
+app.post('/api/register', (req, res) => {
+  const {username, password} = req.body
+  User.findOne({username}).then(doc => {
     if (doc) {
-      console.log('有入库记录了', doc)
-      return res.json({code: 1, err: '用户名重复'})
-    }
-    User.create({user: username, pwd: md5Pwd(password)}, async (err, newUser) => {
-      console.log('新创建了用户', newUser)
-      return await res.json({
-        code: 0,
-        data: {
-          user: newUser.user,
-          _id: newUser._id
-        }
+      return res.json({
+        code: 1,
+        msg: '用户名已存在'
       })
-    })
+    } else {
+      User.create({username, password: md5Pwd(password)}).then(doc => {
+        // 将当前用户存入到session中
+        console.log('新建用户', doc)
+        req.session.user = doc
+        return res.json({
+          code: 0,
+          data: {
+            _id: doc._id,
+            username: doc.username,
+          }
+        })
+      })
+    }
   })
 })
 
 // 登录接口
-app.get('/api/login', (req, res) => {
-  User.findOne({user: 'yk'}, {}, (err, doc) => {
-    res.json({
-      code: 0,
-      data: doc
-    })
+app.post('/api/login', async (req, res) => {
+  const {username, password} = req.body
+  console.log(username, password)
+  User.findOne({ username }, {}, (err, doc) => {
+    if (!doc) {
+      return res.json({
+        code: 1,
+        msg: '用户名不存在'
+      })
+    } else {
+      if (doc.password === md5Pwd(password)) {
+        return res.json({
+          code: 0,
+          data: {
+            username: doc.username,
+            _id: doc._id
+          }
+        })
+      } else {
+        return res.json({
+          code: 1,
+          msg: '用户名或密码错误'
+        })
+      }
+    }
   })
+})
+
+// 验证用户是否登录
+app.get('/api/auth', (req, res) => {
+  if (req.session.user) {
+    return res.json({code: 0, data: req.session.user})
+  }
+  return res.json({code: 1, msg: '请登录'})
 })
 
 app.listen(3001, () => {
