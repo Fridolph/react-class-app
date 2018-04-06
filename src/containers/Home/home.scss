@@ -2,7 +2,7 @@
     display: flex; // justify-content: space-between;
     // align-items: center;
     background-color: #2a2a2a;
-    height: 80px;
+    height: 60px;
     position: fixed;
     z-index: 100;
     top: 0;
@@ -18,8 +18,8 @@
         }
         img {
             margin-left: 20px;
-            width: 60px;
-            height: 60px;
+            width: 40px;
+            height: 40px;
         }
         .icon-control {
             i {
@@ -31,7 +31,7 @@
     }
     .menu-list {
         position: absolute;
-        top: 80px;
+        top: 60px;
         background-color: #2a2a2a;
         width: 100%;
         left: 0;
@@ -48,7 +48,7 @@
 
 .home-content {
     position: fixed;
-    top: 80px;
+    top: 60px;
     bottom: 60px;
     left: 0;
     right: 0;

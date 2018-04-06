@@ -23,7 +23,12 @@ export default function(state = initialState, action) {
     case Types.SET_CURRENT_LESSON:
       return {
         ...state,
-        currentLesson: action.currentLesson
+        currentLesson: action.currentLesson,
+        lessons: {
+          ...state.lessons,
+          lessonList: [],
+          offset: 0
+        }
       }
     case Types.GET_SLIDERS:
       return {

@@ -21,7 +21,7 @@ export default class ScrollList extends Component {
   }
   componentWillReceiveProps(nextProps) {
     // 父组件数据更新，会触发子组件的 componentWillReceiveProps 生命周期函数
-    console.log('ScrollList props', this.props)
+    // console.log('ScrollList props', this.props)
     
     // 等待接受的属性有element 再绑定事件
     if (nextProps.element && !this.state.flag) {

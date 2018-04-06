@@ -1,14 +1,17 @@
 import React, {Component} from 'react'
 import HomeHeader from './HomeHeader'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import * as actions from './redux/actions'
 import './home.scss'
 import Swiper from '../../components/Swiper'
 import ScrollList from '../../components/ScrollList'
+import {getSS, setSS} from '../../utils/util'
 
 class Home extends Component {
   chooseLesson = type => {
     this.props.setCurrentLesson(type)
+    this.props.getLesson()
   }
 
   loadMore = () => {
@@ -37,13 +40,14 @@ class Home extends Component {
               {
                 lessonList.length
                   ? lessonList.map((v, i) => (
-                    <article className="lesson-item" key={i}>
+                    <Link className="lesson-item" key={i} to={{pathname: '/detail', state: v}}>
+                      {/* 跳转详情页，并带上数据 */}
                       <img src={v.img} alt={v.title}/>
                       <div className="text">
                         <h5>{v.lesson}</h5>
                         <p>{v.price}</p>
                       </div>
-                    </article>
+                    </Link>
                   ))
                   : (<div>暂无内容</div>)
               }
@@ -58,8 +62,23 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.props.getSlider() // 请求轮播图数据
-    this.props.getLesson() // 请求课程数据
+    // 判断redux中是否存放了数据， 如果有则不去获取数据
+    const {lessonList} = this.props.home.lessons
+    if (lessonList.length === 0) {
+      this.props.getSlider() // 请求轮播图数据
+      this.props.getLesson() // 请求课程数据
+    }
+    // 让组件强制更新
+    if (lessonList.length > 0) {
+      // 将记录好的滚动条状态取出来 赋给content元素
+      this.scroll.scrollTop = getSS('homeLocation')
+      this.forceUpdate()
+    }
+  }
+
+  componentWillUnmount() {
+    // 记住滚动条的位置
+    setSS('homeLocation', this.scroll.scrollTop)
   }
 }
 

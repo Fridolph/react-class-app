@@ -1,4 +1,4 @@
-import {get} from './index'
+import {get} from '../utils/request'
 
 // 所有的接口方法都加s  最终我们调用的是getSliders方法
 const URL = 'http://localhost:3001/api'
