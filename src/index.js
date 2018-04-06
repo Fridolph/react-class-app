@@ -1,14 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-// import {Provider} from 'react-redux'
+import {Provider} from 'react-redux'
 import {BrowserRouter} from 'react-router-dom'
 import App from './App'
 import './assets/common/reset.scss'
-// const store = {}
+
+import {configureStore} from './redux/store'
+const store = configureStore()
+// console.log(store.getState())
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 )

@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import logo from '../../assets/img/me.jpg'
 import {CSSTransition, TransitionGroup} from 'react-transition-group'
-import './home.scss'
 
 export default class HomeHeader extends Component {
   constructor() {
@@ -17,7 +16,14 @@ export default class HomeHeader extends Component {
     })
   }
 
+  choose = e => {
+    const type = e.target.getAttribute('type')
+    this.props.chooseLesson(type)
+    this.changeShow()
+  }
+
   render() {
+    // console.log(this.props.chooseLesson)
     return (
       <div className="header-home">
         <div className="header-menu">
@@ -34,13 +40,13 @@ export default class HomeHeader extends Component {
           {
             this.state.isShow 
               ? (<CSSTransition classNames="fadeIn" timeout={{enter: 500, exit: 300}}>
-                  <ul className="menu-list">
-                  <li type="1">Node课程培训</li>
-                  <li type="2">HTML课程培训</li>
-                  <li type="3">视频课程</li>
-                  <li type="4">文档课件</li>
-                </ul>
-              </CSSTransition>)
+                  <ul className="menu-list" onClick={this.choose}>
+                    <li type="NODE">Node课程培训</li>
+                    <li type="HTML">HTML课程培训</li>
+                    <li type="MOVIE">视频课程</li>
+                    <li type="DOC">文档课件</li>
+                  </ul>
+                </CSSTransition>)
               : null
           }
         </TransitionGroup>

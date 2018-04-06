@@ -1,58 +1,126 @@
 .header-home {
-  display: flex;
-  // justify-content: space-between;
-  // align-items: center;
-  background-color: #2a2a2a;
-  height: 80px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  .header-menu {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    i {color:#fff;}
-    img {
-      margin-left: 20px;
-      width: 60px;
-      height: 60px;
-    }
-    .icon-control {
-      i {font-size: 20px;}
-      margin-right: 10px;
-      padding: 8px;
-    }
-  }
-  .menu-list {
-    position:absolute;
-    top: 80px;
-    background-color:#2a2a2a;
-    width: 100%;
+    display: flex; // justify-content: space-between;
+    // align-items: center;
+    background-color: #2a2a2a;
+    height: 80px;
+    position: fixed;
+    z-index: 100;
+    top: 0;
     left: 0;
-    li {
-      border-top: 1px solid #464646;
-      height: 44px;
-      color:#eee;
-      line-height: 44px;
-      text-align: center;
+    width: 100%;
+    .header-menu {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        i {
+            color: #fff;
+        }
+        img {
+            margin-left: 20px;
+            width: 60px;
+            height: 60px;
+        }
+        .icon-control {
+            i {
+                font-size: 20px;
+            }
+            margin-right: 10px;
+            padding: 8px;
+        }
     }
-  }
+    .menu-list {
+        position: absolute;
+        top: 80px;
+        background-color: #2a2a2a;
+        width: 100%;
+        left: 0;
+        z-index: 99;
+        li {
+            border-top: 1px solid #464646;
+            height: 44px;
+            color: #eee;
+            line-height: 44px;
+            text-align: center;
+        }
+    }
+}
+
+.home-content {
+    position: fixed;
+    top: 80px;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    overflow-y: auto;
+    width: 100%;
+    .sort-title {
+      background: #23b8ff;
+      width: 80%;
+      border-radius: 24px;
+      margin: 20px auto 0;
+      text-align: center;
+      font-size: 20px;
+      color: #fff;
+      line-height: 40px;
+      box-shadow: 4px 4px 8px rgba(0,0,0,0.1);
+      i {font-size: 20px;}
+    }
+    .lessons-wrapper {
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        .lesson-item {
+            border: 1px solid #eee; 
+            width: 47%;
+            margin: 0 1.5% 20px 1.5%;
+            flex: 0 0 47%;
+            height: 170px;
+            img {
+                max-width: 100%;
+            }
+            .text {
+              padding: 0 10px;
+            }
+            h5 {
+                word-break: break-all;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                overflow: hidden;
+            }
+        }
+    }
+    .more-wrapper {
+      background-color: #f1f1f1;
+      margin-top: 20px;
+      text-align: center;
+      button {
+        color: #aaa;
+        display: block;
+        line-height: 40px;
+        width: 100%;
+      }
+    }
 }
 
 // 动画效果
 .fadeIn-enter {
-  opacity: 0.01;
+    opacity: 0.01;
 }
+
 .fadeIn-enter-active {
-  opacity: 1;
-  transition: all 0.4s ease-in-out;
+    opacity: 1;
+    transition: all 0.4s ease-in-out;
 }
+
 .fadeIn-exit {
-  opacity: 1;
+    opacity: 1;
 }
+
 .fadeIn-exit-active {
-  opacity: 0.01;
-  transition: all 0.4s ease-in-out;
+    opacity: 0.01;
+    transition: all 0.4s ease-in-out;
 }
