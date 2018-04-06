@@ -1,36 +1,78 @@
 .page-profile {
-  .profile-bg {
-    background: url('http://p6pzeyeut.bkt.clouddn.com/image/bg.jpg') no-repeat center center;
-    background-size: cover;
-    height: 220px;
-    position:relative;
-    border-top: 1px solid transparent;
-    img {
-      display: block;
-      margin: 60px auto 0;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
+  
+  .username {
+    text-align: center;
+    width: 100%;
+    display: block;
+    color: #fff;
+    font-size: 16px;
+    line-height: 30px;
+  }
+  .btn-login {
+    width: 66px;
+    height: 26px;
+    font-size: 14px;
+    background: #fff;
+    border-radius: 20px;
+    line-height: 24px;
+    margin: 20px auto 0;
+    display: block;
+    text-align: center;
+    color: #198ae4;
+  }
+  .wrapper {
+    .info {
+      border-top: 1px solid #fff;
+      display: flex;
+      padding: 30px 80px 30px 20px;
+      background-color: #fff;
+      line-height:60px;
+      text-indent: 10px;
+      font-size: 24px;
+      img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 1px solid #dedede;
+      }
     }
-    .username {
-      text-align: center;
+    .info-list {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color:#fff;
+      border-top: 1px solid #dedede;
+      li {
+        width: 42%;
+        margin: 0 4%;
+        padding: 15px;
+        text-align: center;
+        i {font-size: 22px;}
+        font-size: 16px;
+        p{margin-top: 10px;}
+      }
+    }
+    .list {
       width: 100%;
-      display: block;
-      color: #fff;
-      font-size: 16px;
-      line-height: 30px;
-    }
-    .btn-login {
-      width: 66px;
-      height: 26px;
-      font-size: 14px;
-      background: #fff;
-      border-radius: 20px;
-      line-height: 24px;
-      margin: 20px auto 0;
-      display: block;
-      text-align: center;
-      color: #198ae4;
+      margin-top: 15px;
+      background-color: #fff;
+      li {
+        padding-left: 20px;
+        height: 44px;
+        line-height: 44px;
+        position: relative;
+        .item-link {
+          width: 100%;
+          border-bottom: 1px solid #eee;
+          .icon {
+            position: absolute;
+            right: 0;
+            padding: 0 10px;
+            color: #acacac;
+            font-weight: bold;
+          }
+        }
+      }
     }
   }
 }

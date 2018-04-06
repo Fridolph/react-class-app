@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import HomeHeader from './HomeHeader'
+import HomePromotion from './HomePromotion'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import * as actions from './redux/actions'
@@ -28,6 +29,7 @@ class Home extends Component {
           {/* 首页顶部的轮播图 */}
           <Swiper list={this.props.home.sliders} />
           {/* 课程列表 */}
+          <HomePromotion />
           <h2 className="sort-title"><i className="iconfont icon-kechengbiao"></i> 全部课程</h2>
           <ScrollList 
             element={this.scroll}

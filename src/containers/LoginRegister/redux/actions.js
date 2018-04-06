@@ -56,7 +56,8 @@ export const auth = _ => dispatch => {
 
 export const validate = () => dispatch => {
   auths().then(res => {
-    if (res.data.username) {
+    console.log('validate', res)
+    if (res.data && res.data.username) {
       setSS('user', res)
       dispatch({
         type: Types.SET_USER_INFO,
