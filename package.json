@@ -46,7 +46,7 @@
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
-    "react-router-redux": "^4.0.8",
+    "react-router-redux": "^5.0.0-alpha.9",
     "react-swipe": "^5.1.1",
     "react-thunk": "^1.0.0",
     "react-transition-group": "^2.3.0",

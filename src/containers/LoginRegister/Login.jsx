@@ -13,6 +13,7 @@ class Login extends Component {
     let username = this.username.value
     let password = this.password.value
     this.props.login({username, password})
+    this.props.history.push('/lessons')
   }
 
   render() {

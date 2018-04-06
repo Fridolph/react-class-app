@@ -21,20 +21,21 @@ export const register = userInfo => (dispatch) => {
         type: Types.SET_USER_INFO,
         data: res.data
       })
-      dispatch(push('/')) // 跳转路由
+      // 跳转路由
+      dispatch(push('/lessson')) 
     }
   })
 }
 
 export const login = userInfo => dispatch => {
   loginHandle(userInfo).then(res => {
-    console.log('开始登录action', res)
     if (res.code === 1) {
       dispatch({
         type: Types.SET_ERROR,
         msg: res.msg
       })
     } else if (res.code === 0) {
+      setSS('user', res)
       dispatch({
         type: Types.SET_USER_INFO,
         data: res.data
