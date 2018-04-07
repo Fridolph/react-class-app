@@ -12,7 +12,7 @@ export default class TabBar extends Component {
         </NavLink>
         <NavLink to={'/sort'} className="tab-item" activeClassName="selected">
           <i className="iconfont icon-kechengbiao"></i>
-          <span>我的课程</span>
+          <span>分类</span>
         </NavLink>
         <NavLink to={'/profile'} className="tab-item" activeClassName="selected">
           <i className="iconfont icon-gerenxinxi"></i>

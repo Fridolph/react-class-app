@@ -5,7 +5,6 @@ import {getSS} from '../../utils/util'
 export default class PrivateRoute extends Component {
   render() {
     const {component: Comp, ...rest} = this.props
-    console.log(Comp, rest)
     return (
       <Route {...rest} render={props => (
         getSS('user') && getSS('user').data.username

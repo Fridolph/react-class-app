@@ -5,7 +5,6 @@ import './m-header.scss'
 class MHeader extends Component {
 
   back = () => {
-    console.log(this.props)
     this.props.history.goBack()
   }
 
