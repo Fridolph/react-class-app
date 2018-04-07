@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 
-export default class Lesson extends Component {
+export default class Sort extends Component {
   render() {
     return (
-      <h1>Lesson</h1>
+      <h1>Sort</h1>
     )
   }
 }

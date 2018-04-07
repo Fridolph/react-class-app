@@ -1,0 +1,146 @@
+.page-detail {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 110;
+  background: #fff;
+  padding-top: 60px;
+  overflow: hidden;
+  overflow-y: auto;
+  .d-header {
+    position: fixed;
+    background: #fff;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    height: 50px;
+    border-bottom: 1px solid #dfdfdf;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .arrow {
+      flex: 0 0 50px;
+      height: 50px;
+      i {
+        color: #666;
+        font-size: 18px; 
+        padding: 5px 0 5px 10px;
+        display: block;
+        height: 50px;
+        line-height: 40px;
+      }
+    }
+    .text {
+      width: calc(100% - 220px);
+      color: #333;
+      small {
+        display: block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        font-size: 12px;
+        color: #999;
+      }
+    }
+    .btn-row {
+      flex: 0 0 160px;
+      .btn {
+        width: 70px;
+        border: 1px solid #23b8ff;
+        height: 30px;
+        line-height: 28px;
+        margin-right: 10px;
+        text-align: center;
+        border-radius: 4px;
+        color:#23b8ff;
+        font-size: 15px;
+        background-color: #fff;
+      }
+      .btn-primary {
+        background-color:#23b8ff;
+        color: #fff;
+      }
+    }
+  }
+  .img-text-wrapper {
+    width: 100%;
+    padding-bottom: 15px;
+    img {
+      width: 100%;
+    }
+    h4, p {
+      padding: 0 15px;
+    }
+    p {
+      font-size: 18px;
+      color: green;
+    }
+  }
+  .split {
+    width: 100%;
+    background: #f5f5f5;
+    height: 15px; 
+  }
+  .detail {
+    padding: 15px;
+    .title {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+  }
+  .info-teacher {
+    .teacher-list {
+      margin-top: 50px;
+      .list-item {
+        position: relative;
+        height: 180px;
+        margin-top: 40px;
+      }
+      .item {
+        position: relative;
+        height: 160px;
+        border: 1px solid #dedede;
+        .info-top {
+          position: absolute;
+          background: #fff;
+          top: -30px;
+          left: 50%;
+          padding: 0 10px 0 130px;
+          height: 100px;
+          width: 240px;
+          transform: translateX(-50%);
+          img {
+            position:absolute;
+            left: 20px;
+            top: 0;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+          }
+        }
+        .list-info {
+          width: 100%;
+          height: 70px;
+          padding: 10px 15px 24px;
+          position: absolute;
+          top: 70px;
+          overflow: hidden;
+          font-size: 14px;
+          line-height: 1.5;
+          background: #fff;
+          p {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            white-space: pre-wrap;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+    }
+  }
+}

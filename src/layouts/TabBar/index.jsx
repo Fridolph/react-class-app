@@ -10,7 +10,7 @@ export default class TabBar extends Component {
           <i className="iconfont icon-xingqiu"></i>
           <span>首页</span>
         </NavLink>
-        <NavLink to={'/lesson'} className="tab-item" activeClassName="selected">
+        <NavLink to={'/sort'} className="tab-item" activeClassName="selected">
           <i className="iconfont icon-kechengbiao"></i>
           <span>我的课程</span>
         </NavLink>

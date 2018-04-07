@@ -42,9 +42,9 @@ class Home extends Component {
               {
                 lessonList.length
                   ? lessonList.map((v, i) => (
-                    <Link className="lesson-item" key={i} to={{pathname: '/detail', state: v}}>
+                    <Link className="lesson-item" key={i} to={{pathname: `/detail/${v.lesson}`, state: v}}>
                       {/* 跳转详情页，并带上数据 */}
-                      <img src={v.img} alt={v.title}/>
+                      <img src={v.img} alt={v.lesson}/>
                       <div className="text">
                         <h5>{v.lesson}</h5>
                         <p>{v.price}</p>

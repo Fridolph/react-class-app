@@ -7,7 +7,7 @@ import PrivateRoute from './components/PrivateRoute'
 import Home from './containers/Home'
 import Login from './containers/LoginRegister/Login'
 import Register from './containers/LoginRegister/Register'
-import Lesson from './containers/Lesson'
+import Sort from './containers/Sort'
 import Profile from './containers/Profile'
 import Detail from './containers/Detail'
 import TabBar from './layouts/TabBar'
@@ -26,9 +26,9 @@ export default class App extends Component {
             <Route exact path={'/'} component={Home}/>
             <Route path={'/register'} component={Register}/>
             <Route path={'/login'} component={Login}/>
-            <PrivateRoute path={'/lesson'} component={Lesson}/>
+            <PrivateRoute path={'/sort'} component={Sort}/>
             <Route path={'/profile'} component={Profile}/>
-            <Route path={'/detail'} component={Detail}/>
+            <Route path={'/detail/:id'} component={Detail}/>
           </Switch>
         </div>
         {/* </ConnectedRouter> */}
