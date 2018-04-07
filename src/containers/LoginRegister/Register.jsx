@@ -18,7 +18,7 @@ class Register extends Component {
 
   componentWillReceiveProps(nextProps) {
     if(nextProps.user.userInfo) {
-      this.props.history.push('/lesson')
+      this.props.history.push('/sort')
     }
   }
 
